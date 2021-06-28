@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -46,6 +48,28 @@ class User
      * @ORM\Column(type="integer")
      */
     private $realisatorExlvl;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Challenge::class, mappedBy="creator")
+     */
+    private $challenges;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Exercice::class, mappedBy="realisator")
+     */
+    private $exercices;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Correction::class, mappedBy="corrector")
+     */
+    private $corrections;
+
+    public function __construct()
+    {
+        $this->challenges = new ArrayCollection();
+        $this->exercices = new ArrayCollection();
+        $this->corrections = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -120,6 +144,96 @@ class User
     public function setRealisatorExlvl(int $realisatorExlvl): self
     {
         $this->realisatorExlvl = $realisatorExlvl;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Challenge[]
+     */
+    public function getChallenges(): Collection
+    {
+        return $this->challenges;
+    }
+
+    public function addChallenge(Challenge $challenge): self
+    {
+        if (!$this->challenges->contains($challenge)) {
+            $this->challenges[] = $challenge;
+            $challenge->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeChallenge(Challenge $challenge): self
+    {
+        if ($this->challenges->removeElement($challenge)) {
+            // set the owning side to null (unless already changed)
+            if ($challenge->getCreator() === $this) {
+                $challenge->setCreator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Exercice[]
+     */
+    public function getExercices(): Collection
+    {
+        return $this->exercices;
+    }
+
+    public function addExercice(Exercice $exercice): self
+    {
+        if (!$this->exercices->contains($exercice)) {
+            $this->exercices[] = $exercice;
+            $exercice->setRealisator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExercice(Exercice $exercice): self
+    {
+        if ($this->exercices->removeElement($exercice)) {
+            // set the owning side to null (unless already changed)
+            if ($exercice->getRealisator() === $this) {
+                $exercice->setRealisator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Correction[]
+     */
+    public function getCorrections(): Collection
+    {
+        return $this->corrections;
+    }
+
+    public function addCorrection(Correction $correction): self
+    {
+        if (!$this->corrections->contains($correction)) {
+            $this->corrections[] = $correction;
+            $correction->setCorrector($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCorrection(Correction $correction): self
+    {
+        if ($this->corrections->removeElement($correction)) {
+            // set the owning side to null (unless already changed)
+            if ($correction->getCorrector() === $this) {
+                $correction->setCorrector(null);
+            }
+        }
 
         return $this;
     }
