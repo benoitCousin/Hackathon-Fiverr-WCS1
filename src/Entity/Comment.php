@@ -27,6 +27,12 @@ class Comment
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Correction::class, inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $correction;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +58,18 @@ class Comment
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getCorrection(): ?Correction
+    {
+        return $this->correction;
+    }
+
+    public function setCorrection(?Correction $correction): self
+    {
+        $this->correction = $correction;
 
         return $this;
     }

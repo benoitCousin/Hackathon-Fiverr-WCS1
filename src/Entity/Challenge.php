@@ -42,6 +42,18 @@ class Challenge
      */
     private $createdAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Difficulty::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $difficultyLevel;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="challenges")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $creator;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +115,30 @@ class Challenge
     public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getDifficultyLevel(): ?Difficulty
+    {
+        return $this->difficultyLevel;
+    }
+
+    public function setDifficultyLevel(?Difficulty $difficultyLevel): self
+    {
+        $this->difficultyLevel = $difficultyLevel;
+
+        return $this;
+    }
+
+    public function getCreator(): ?User
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?User $creator): self
+    {
+        $this->creator = $creator;
 
         return $this;
     }
