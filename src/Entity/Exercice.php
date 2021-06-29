@@ -6,6 +6,7 @@ use App\Repository\ExerciceRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=ExerciceRepository::class)
@@ -25,7 +26,7 @@ class Exercice
     private $status;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $doneAt;
 
@@ -68,12 +69,12 @@ class Exercice
         return $this;
     }
 
-    public function getDoneAt(): ?\DateTimeImmutable
+    public function getDoneAt(): ?DateTime
     {
         return $this->doneAt;
     }
 
-    public function setDoneAt(\DateTimeImmutable $doneAt): self
+    public function setDoneAt(DateTime $doneAt): self
     {
         $this->doneAt = $doneAt;
 

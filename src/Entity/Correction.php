@@ -6,6 +6,7 @@ use App\Repository\CorrectionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use DateTime;
 
 /**
  * @ORM\Entity(repositoryClass=CorrectionRepository::class)
@@ -25,7 +26,7 @@ class Correction
     private $status;
 
     /**
-     * @ORM\Column(type="datetime_immutable")
+     * @ORM\Column(type="datetime")
      */
     private $correctedAt;
 
@@ -67,12 +68,12 @@ class Correction
         return $this;
     }
 
-    public function getCorrectedAt(): ?\DateTimeImmutable
+    public function getCorrectedAt(): ?DateTime
     {
         return $this->correctedAt;
     }
 
-    public function setCorrectedAt(\DateTimeImmutable $correctedAt): self
+    public function setCorrectedAt(DateTime $correctedAt): self
     {
         $this->correctedAt = $correctedAt;
 
