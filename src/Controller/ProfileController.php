@@ -34,15 +34,12 @@ class ProfileController extends AbstractController
     }
     /**
      * @Route("/profile/show", name="profile_show")
-     * 
      */
     public function show(UserRepository $userRepository): Response
     {
         $status = $userRepository->findAll();
         return $this->render('profile/show.html.twig',['status' => $status]);
     }
-
-    
 }
     
 
