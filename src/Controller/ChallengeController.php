@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Challenge;
+use App\Entity\User;
 use App\Form\ChallengeType;
 use App\Repository\ChallengeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use DateTime;
 
 /**
  * @Route("/challenge")
@@ -35,6 +37,11 @@ class ChallengeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            //var_dump($this->getUser()); die;
+            
+            $challenge->setStatus(0);
+            $challenge->setCreatedAt(new datetime());
+            $challenge->setCreator($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($challenge);
             $entityManager->flush();
