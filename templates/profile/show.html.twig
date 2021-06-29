@@ -33,15 +33,35 @@
 
                 <div class="profile-details">
                     <ul class="fa-ul">
+                        Correcteur: <span>828</span></li>
                         <li>{% if app.user.correctorExlvl < 50 %}
-                            <img><i src="public/assets/medaille-de-bronze.png"></img>
-                        {% endif %}</i>Création de challenge: <span>456</span></li>
-                        <li>{% if correctorExlvl >= 500 %}
-                            <img><i src="public/assets/medaille-d'argent.png"></img>
-                        {% endif %}</i>Correcteur: <span>828</span></li>
-                        <li>{% if correctorExlvl >= 5000 %}
-                            <i src="public/assets/medaille-d'or (1).png">
-                        {% endif %}</i></i>Challenge: <span>1024</span></li>
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583434.png" width="15%"> </img>{% endif %}             
+                        <li>{% if app.user.correctorExlvl >= 500 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583319.png" width="15%"></img>{% endif %}              
+                        <li>{% if app.user.correctorExlvl >= 5000 %}
+                            <img src="https://image.flaticon.com/icons/png/128/744/744984.png" width="15%"> </img>{% endif %}
+                           
+                    </ul>
+                    <ul class="fa-ul">
+                        Challenge: <span>1024</span></li>
+                        <li>{% if app.user.correctorExlvl < 50 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583434.png" width="15%"> </img>{% endif %}             
+                        <li>{% if app.user.correctorExlvl >= 500 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583319.png" width="15%"></img>{% endif %}              
+                        <li>{% if app.user.correctorExlvl >= 5000 %}
+                            <img src="https://image.flaticon.com/icons/png/128/744/744984.png" width="15%"> </img>{% endif %}
+                            
+                    </ul>
+
+                    <ul class="fa-ul">
+                        Création de challenge: <span>828</span></li>
+                        <li>{% if app.user.correctorExlvl < 50 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583434.png" width="15%"> </img>{% endif %}            
+                        <li>{% if app.user.correctorExlvl >= 500 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583319.png" width="15%"></img>{% endif %}              
+                        <li>{% if app.user.correctorExlvl >= 5000 %}
+                            <img src="https://image.flaticon.com/icons/png/128/744/744984.png" width="15%"> </img>{% endif %}
+                            
                     </ul>
                 </div>
 
