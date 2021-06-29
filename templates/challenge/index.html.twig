@@ -1,43 +1,338 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Challenge index{% endblock %}
-
 {% block body %}
-    <h1>Challenge index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Status</th>
-                <th>Validation</th>
-                <th>CreatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for challenge in challenges %}
-            <tr>
-                <td>{{ challenge.id }}</td>
-                <td>{{ challenge.title }}</td>
-                <td>{{ challenge.description }}</td>
-                <td>{{ challenge.status ? 'Yes' : 'No' }}</td>
-                <td>{{ challenge.validation }}</td>
-                <td>{{ challenge.createdAt ? challenge.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('challenge_show', {'id': challenge.id}) }}">show</a>
-                    <a href="{{ path('challenge_edit', {'id': challenge.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 
-    <a href="{{ path('challenge_new') }}">Create new</a>
+<div id="main-content" class="file_manager">
+        <div class="container">
+            <div class="row clearfix">
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: expert </p>
+                                    <small><span class="date text-muted">Nov 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>                            
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FF69B4/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2019</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FFA07A/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: intermediaire </p>
+                                    <small><span class="date text-muted">Jan 09, 2020</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/B0C4DE/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Mar 31, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/9370DB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: expert </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>               
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/48D1CC/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Sept 11, 2020</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DA70D6/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: intermediaire </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DB7093/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Feb 24, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>                            
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/DDA0DD/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FFC0CB/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: expert </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FA8072/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/4682B4/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>               
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/40E0D0/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/FA8072/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-12">
+                    <div class="card">
+                        <div class="file">
+                            <a href="javascript:void(0);">
+                                <div class="hover">
+                                    <button type="button" class="btn btn-icon btn-danger">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="image">
+                                    <img src="https://via.placeholder.com/280x280/87CEFA/000000" alt="img" class="img-fluid">
+                                </div>
+                                <div class="file-name">
+                                    <p class="m-b-5 text-muted">niveau: débutant </p>
+                                    <small><span class="date text-muted">Dec 11, 2021</span></small>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+
 {% endblock %}
