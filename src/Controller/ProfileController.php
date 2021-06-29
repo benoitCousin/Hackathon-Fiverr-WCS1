@@ -23,7 +23,7 @@ class ProfileController extends AbstractController
         $users = $userRepository->findall();
         $corrections = $correctionRepository->findAll();
         $exercices = $exerciceRepository->findAll();
-        $challenges = $challengeRepository->findAll();
+        $challenges = $this->$challengeRepository->findAll()->getCreator();;
 
         return $this->render('profile/index.html.twig', [
             'correction'=> $corrections,
