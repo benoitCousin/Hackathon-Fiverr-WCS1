@@ -76,6 +76,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $corrections;
 
+    
     public function __construct()
     {
         $this->challenges = new ArrayCollection();

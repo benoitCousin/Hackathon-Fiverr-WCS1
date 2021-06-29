@@ -1,4 +1,4 @@
-<?php
+
 {% extends "base.html.twig" %}
 
 {% block title %}Profile{% endblock %}
@@ -34,9 +34,15 @@
 
                 <div class="profile-details">
                     <ul class="fa-ul">
-                        <li><i src="public/assets/medaille-d'or (1).png"></i>Création de challenge: <span>456</span></li>
-                        <li><i src="public/assets/medaille-d'argent.png"></i>Correcteur: <span>828</span></li>
-                        <li><i src="public/assets/medaille-de-bronze.png"></i>Challenge: <span>1024</span></li>
+                        <li>{% if app.user.correctorExlvl < 50 %}
+                            <img><i src="public/assets/medaille-de-bronze.png"></img>
+                        {% endif %}</i>Création de challenge: <span>456</span></li>
+                        <li>{% if correctorExlvl >= 500 %}
+                            <img><i src="public/assets/medaille-d'argent.png"></img>
+                        {% endif %}</i>Correcteur: <span>828</span></li>
+                        <li>{% if correctorExlvl >= 5000 %}
+                            <i src="public/assets/medaille-d'or (1).png">
+                        {% endif %}</i></i>Challenge: <span>1024</span></li>
                     </ul>
                 </div>
 
