@@ -42,11 +42,12 @@ class ChallengeController extends AbstractController
             $challenge->setStatus(0);
             $challenge->setCreatedAt(new datetime());
             $challenge->setCreator($this->getUser());
+            $this->getUser()->setCreatorQlvl($this->getUser()->getCorrectorQlvl() + 10);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($challenge);
             $entityManager->flush();
 
-            return $this->redirectToRoute('challenge_index');
+            return $this->redirectToRoute('profile_show');
         }
 
         return $this->render('challenge/new.html.twig', [
@@ -56,7 +57,7 @@ class ChallengeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="challenge_show", methods={"GET"})
+     * @Route("/show/{id}", name="challenge_show", methods={"GET"})
      */
     public function show(Challenge $challenge): Response
     {
