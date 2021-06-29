@@ -2,6 +2,13 @@
 
 {% block title %}Profile{% endblock %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+{% endblock %}
+{% block javascripts %}
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+{% endblock %}
 {% block body %}
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -33,9 +40,35 @@
 
                 <div class="profile-details">
                     <ul class="fa-ul">
-                        <li><i src="public/assets/medaille-d'or (1).png"></i>Création de challenge: <span>456</span></li>
-                        <li><i src="public/assets/medaille-d'argent.png"></i>Correcteur: <span>828</span></li>
-                        <li><i src="public/assets/medaille-de-bronze.png"></i>Challenge: <span>1024</span></li>
+                        Correcteur: <span>{{app.user.correctorExlvl}}</span></li>
+                        <li>{% if app.user.correctorExlvl < 50 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583434.png" width="15%"> </img>{% endif %}             
+                        <li>{% if app.user.correctorExlvl >= 50 and app.user.correctorExlvl < 500%}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583319.png" width="15%"></img>{% endif %}              
+                        <li>{% if app.user.correctorExlvl >= 500 %}
+                            <img src="https://image.flaticon.com/icons/png/128/744/744984.png" width="15%"> </img>{% endif %}
+                           
+                    </ul>
+                    <ul class="fa-ul">
+                        Challenge: <span>{{app.user.correctorQlvl}}</span></li>
+                        <li>{% if app.user.correctorQlvl < 50 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583434.png" width="15%"> </img>{% endif %}             
+                        <li>{% if app.user.correctorQlvl >= 50 and app.user.correctorQlvl < 500%}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583319.png" width="15%"></img>{% endif %}              
+                        <li>{% if app.user.correctorQlvl >= 500 %}
+                            <img src="https://image.flaticon.com/icons/png/128/744/744984.png" width="15%"> </img>{% endif %}
+                            
+                    </ul>
+
+                    <ul class="fa-ul">
+                        Création de challenge: <span>{{app.user.creatorQlvl }}</span></li>
+                        <li>{% if app.user.creatorQlvl < 50 %}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583434.png" width="15%"> </img>{% endif %}            
+                        <li>{% if app.user.creatorQlvl >= 50 and app.user.creatorQlvl < 500%}
+                            <img src="https://image.flaticon.com/icons/png/128/2583/2583319.png" width="15%"></img>{% endif %}              
+                        <li>{% if app.user.creatorQlvl >= 500 %}
+                            <img src="https://image.flaticon.com/icons/png/128/744/744984.png" width="15%"> </img>{% endif %}
+                            
                     </ul>
                 </div>
 
@@ -51,9 +84,7 @@
             <div class="main-box clearfix">
                 <div class="profile-header">
                     <h3><span>User info</span></h3>
-                    <a href="#" class="btn btn-primary edit-profile">
-                        <i class="fa fa-pencil-square fa-lg"></i> Edit profile
-                    </a>
+                    
                 </div>
 
                 <div class="row profile-user-info">
@@ -111,7 +142,7 @@
                                     <tbody>
                                         <tr>
                                             <td class="text-center">
-                                                <i class="fa fa-comment"></i>
+                                                
                                             </td>
                                             <td>
                                                 John Doe  posted a comment in <a href="#">Avengers Initiative</a> project.
@@ -122,7 +153,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">
-                                                <i class="fa fa-truck"></i>
+                                               
                                             </td>
                                             <td>
                                                 John Doe  changed order status from <span class="label label-primary">Pending</span> to <span class="label label-success">Completed</span>
@@ -133,7 +164,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">
-                                                <i class="fa fa-check"></i>
+                                                
                                             </td>
                                             <td>
                                                 John Doe  posted a comment in <a href="#">Lost in Translation opening scene</a> discussion.
@@ -144,7 +175,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">
-                                                <i class="fa fa-users"></i>
+                                                
                                             </td>
                                             <td>
                                                 John Doe  posted a comment in <a href="#">Avengers Initiative</a> project.
@@ -155,7 +186,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">
-                                                <i class="fa fa-heart"></i>
+                                                
                                             </td>
                                             <td>
                                                 John Doe  changed order status from <span class="label label-warning">On Hold</span> to <span class="label label-danger">Disabled</span>
@@ -166,7 +197,7 @@
                                         </tr>
                                         <tr>
                                             <td class="text-center">
-                                                <i class="fa fa-check"></i>
+                                               
                                             </td>
                                             <td>
                                                 John Doe  posted a comment in <a href="#">Lost in Translation opening scene</a> discussion.
@@ -175,27 +206,7 @@
                                                 2014/08/08 12:08
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <i class="fa fa-truck"></i>
-                                            </td>
-                                            <td>
-                                                John Doe  changed order status from <span class="label label-primary">Pending</span> to <span class="label label-success">Completed</span>
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                <i class="fa fa-users"></i>
-                                            </td>
-                                            <td>
-                                                John Doe  posted a comment in <a href="#">Avengers Initiative</a> project.
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
+                                        
                                         </tr>
                                     </tbody>
                                 </table>

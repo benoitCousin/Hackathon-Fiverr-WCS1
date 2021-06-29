@@ -21,7 +21,6 @@ class ProfileController extends AbstractController
 
     /**
      * @Route("/profile/show", name="profile_show")
-     * 
      */
     public function show(UserRepository $userRepository): Response
     {
