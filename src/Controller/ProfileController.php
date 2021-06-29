@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Correction;
 use App\Entity\Exercice;
 use App\Entity\User;
+use App\Repository\ChallengeRepository;
 use App\Repository\CorrectionRepository;
 use App\Repository\ExerciceRepository;
 use App\Repository\UserRepository;
@@ -17,16 +18,18 @@ class ProfileController extends AbstractController
     /**
      * @Route("/profile", name="profile_index")
      */
-    public function index(UserRepository $userRepository, CorrectionRepository $correctionRepository, ExerciceRepository $exerciceRepository): Response
+    public function index(ChallengeRepository $challengeRepository, UserRepository $userRepository, CorrectionRepository $correctionRepository, ExerciceRepository $exerciceRepository): Response
     {   
         $users = $userRepository->findall();
         $corrections = $correctionRepository->findAll();
         $exercices = $exerciceRepository->findAll();
+        $challenges = $challengeRepository->findAll();
+
         return $this->render('profile/index.html.twig', [
             'correction'=> $corrections,
             'exercices' => $exercices,
+            'challenges' => $challenges,
             'users' => $users
-
         ]);
     }
     /**

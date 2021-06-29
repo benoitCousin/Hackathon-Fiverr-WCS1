@@ -41,10 +41,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /** 
     * @ORM\Column(type="string")
     */
-    private $pseudo;
-        /**
-     * @ORM\Column(type="integer", options={"default": 0})
-     */
+    
     private $creatorQlvl;
 
     /**

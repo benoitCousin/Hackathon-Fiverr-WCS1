@@ -1950,15 +1950,9 @@
                 "psr-6"
             ],
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/php-fig/cache/tree/master"
-            },
-            "time": "2016-08-06T20:24:11+00:00"
-=======
                 "source": "https://github.com/php-fig/cache/tree/2.0.0"
             },
             "time": "2021-02-03T23:23:37+00:00"
->>>>>>> main
         },
         {
             "name": "psr/container",
@@ -2107,15 +2101,9 @@
                 "rest"
             ],
             "support": {
-<<<<<<< HEAD
-                "source": "https://github.com/php-fig/link/tree/master"
-            },
-            "time": "2016-10-28T16:06:13+00:00"
-=======
                 "source": "https://github.com/php-fig/link/tree/1.1.1"
             },
             "time": "2021-03-11T22:59:13+00:00"
->>>>>>> main
         },
         {
             "name": "psr/log",
@@ -10181,9 +10169,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": [],
-<<<<<<< HEAD
-    "plugin-api-version": "2.0.0"
-=======
     "plugin-api-version": "2.1.0"
->>>>>>> main
 }

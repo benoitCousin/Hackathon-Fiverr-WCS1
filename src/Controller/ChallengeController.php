@@ -56,7 +56,7 @@ class ChallengeController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="challenge_show", methods={"GET"})
+     * @Route("/show/{id}", name="challenge_show", methods={"GET"})
      */
     public function show(Challenge $challenge): Response
     {
