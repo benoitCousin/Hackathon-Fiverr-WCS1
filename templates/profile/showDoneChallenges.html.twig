@@ -1,0 +1,126 @@
+
+{% extends "base.html.twig" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container bootstrap snippets bootdeys">
+    <div class="row" id="user-profile">
+        <div class="col-lg-3 col-md-4 col-sm-4">
+            <div class="main-box clearfix">
+                <h2>John Doe</h2>
+                <div class="profile-status">
+                    <i class="fa fa-check-circle"></i> Online
+                </div>
+                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-img w-100 img-responsive center-block">
+                <div class="profile-label">
+                    <span class="label label-danger">Admin</span>
+                </div>
+
+                <div class="profile-stars">
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star"></i>
+                    <i class="fa fa-star-o"></i>
+                    <span>Super User</span>
+                </div>
+
+                <div class="profile-since">
+                    Member since: Jan 2012
+                </div>
+
+                <div class="profile-details">
+                    <ul class="fa-ul">
+                        <li><i src="public/assets/medaille-d'or (1).png"></i>Création de challenge: <span>456</span></li>
+                        <li><i src="public/assets/medaille-d'argent.png"></i>Correcteur: <span>828</span></li>
+                        <li><i src="public/assets/medaille-de-bronze.png"></i>Challenge: <span>1024</span></li>
+                    </ul>
+                </div>
+
+                <div class="profile-message-btn center-block text-center">
+                    <a href="#" class="btn btn-success">
+                        <i class="fa fa-envelope"></i> Send message
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-9 col-md-8 col-sm-8">
+            <div class="main-box clearfix">
+                <div class="profile-header">
+                    <h3><span>User info</span></h3>
+                    <a href="#" class="btn btn-primary edit-profile">
+                        <i class="fa fa-pencil-square fa-lg"></i> Edit profile
+                    </a>
+                </div>
+
+                <div class="row profile-user-info">
+                    <div class="col-sm-8">
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                First Name
+                            </div>
+                            <div class="profile-user-details-value">
+                                John
+                            </div>
+                        </div>
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Last Name
+                            </div>
+                            <div class="profile-user-details-value">
+                                Doe
+                            </div>
+                        </div>
+                      
+                        <div class="profile-user-details clearfix">
+                            <div class="profile-user-details-label">
+                                Email
+                            </div>
+                            <div class="profile-user-details-value">
+                                johndoe@bootdey.com
+                            </div>
+                        </div>
+                       
+                    </div>
+                    <div class="col-sm-4 profile-social">
+                        <ul class="fa-ul">
+                            <li><i class="fa-li fa fa-twitter-square"></i><a href="#">@scjohansson</a></li>
+                            <li><i class="fa-li fa fa-linkedin-square"></i><a href="#">John Doe </a></li>
+                            <li><i class="fa-li fa fa-facebook-square"></i><a href="#">John Doe </a></li>
+                            <li><i class="fa-li fa fa-skype"></i><a href="#">Black_widow</a></li>
+                            <li><i class="fa-li fa fa-instagram"></i><a href="#">Avenger_Scarlett</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="tabs-wrapper profile-tabs">
+                    <ul class="nav nav-tabs">
+                        <li class=""><a href="" data-toggle="tab">Challenge créer</a></li>
+                        <li><a href=" {{ path('challenge_index') }}" data-toggle="tab">Mes challenges</a></li>
+                        <li><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
+                    </ul>
+
+                        <div class="row">
+                        <div class="challenge-container d-flex ">
+                        {% for challenge in challenges %}   
+                            {% if challenge.status > 0  %}
+                            <div class="challenge-bloc d-flex flex-column">
+                                <img src="https://1.bp.blogspot.com/-Md4dhiE7FnY/XowkpY5-8LI/AAAAAAAA4IM/T7lTXZZY1MUmn1mUYkEccCb76vltpQZQwCLcBGAsYHQ/s1600/javascript-et-css-1.jpg" class="img-fluid" alt="">
+                                <p> {{ challenge.title }} </p>
+                                <p> {{ challenge.description }} </p>
+                                <a href="{{ path('challenge_show',{"id": challenge.id }) }}"><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                            </div>
+                                {% else %}
+                                <p> You do not have any challenge created</p>
+                            {% endif %}
+                        {% endfor %}
+                        </div>
+                    </div>
+                    
+                    
+
+{% endblock %}

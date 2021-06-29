@@ -16,30 +16,40 @@ use Symfony\Component\Routing\Annotation\Route;
 class ProfileController extends AbstractController
 {
     /**
-     * @Route("/profile", name="profile_index")
+     * @Route("/profile/done", name="profile_done")
      */
-    public function index(ChallengeRepository $challengeRepository, UserRepository $userRepository, CorrectionRepository $correctionRepository, ExerciceRepository $exerciceRepository): Response
-    {   
+    public function showDoneChallenges(ChallengeRepository $challengeRepository, UserRepository $userRepository): Response
+    {
         $users = $userRepository->findall();
-        $corrections = $correctionRepository->findAll();
-        $exercices = $exerciceRepository->findAll();
-        $challenges = $this->$challengeRepository->findAll()->getCreator();;
+        $challenges = $challengeRepository->findAll();
 
-        return $this->render('profile/index.html.twig', [
-            'correction'=> $corrections,
-            'exercices' => $exercices,
+        return $this->render('profile/showDoneChallenges.html.twig', [
             'challenges' => $challenges,
             'users' => $users
         ]);
     }
+    /**
+     * @Route("/profile/pending", name="profile_pending")
+     */
+    public function showPendingChallenges(ChallengeRepository $challengeRepository, UserRepository $userRepository): Response
+    {
+        $users = $userRepository->findall();
+        $challenges = $challengeRepository->findAll();
+
+        return $this->render('profile/showPendingChallenges.html.twig', [
+            'challenges' => $challenges,
+            'users' => $users
+        ]);
+    }
+
     /**
      * @Route("/profile/show", name="profile_show")
      */
     public function show(UserRepository $userRepository): Response
     {
         $status = $userRepository->findAll();
-        return $this->render('profile/show.html.twig',['status' => $status]);
+        return $this->render('profile/show.html.twig', ['status' => $status]);
     }
-}
-    
 
+
+}

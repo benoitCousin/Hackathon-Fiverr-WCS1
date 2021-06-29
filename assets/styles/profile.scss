@@ -303,6 +303,10 @@ h3>span {
     border-color: #bd9804;
 }
 
+.success{
+    background-color:#2aa493;
+}
+
 .icon-box .btn {
     border: 1px solid #e1e1e1;
     margin-left: 3px;
@@ -721,10 +725,14 @@ textarea.form-control {
     -webkit-box-shadow: none;
 }
 
+.challenge-container{
+    padding-top: 25px;
+}
+
 .challenge-bloc {
-    width: 450px;
-    height: 450px;
+    width: 350px;
+    height: 385px;
     border: 1px solid black;
     padding: 10px;
-
+    margin: 5px;
 }
