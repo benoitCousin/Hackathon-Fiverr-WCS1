@@ -3,14 +3,16 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
-class User
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     /**
      * @ORM\Id
@@ -20,72 +22,24 @@ class User
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=100)
-     */
-    private $pseudo;
-
-    /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=180, unique=true)
      */
     private $email;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="json")
      */
-    private $creatorQlvl;
+    private $roles = [];
 
     /**
-     * @ORM\Column(type="integer")
+     * @var string The hashed password
+     * @ORM\Column(type="string")
      */
-    private $correctorQlvl;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $correctorExlvl;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $realisatorExlvl;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Challenge::class, mappedBy="creator")
-     */
-    private $challenges;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Exercice::class, mappedBy="realisator")
-     */
-    private $exercices;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Correction::class, mappedBy="corrector")
-     */
-    private $corrections;
-
-    public function __construct()
-    {
-        $this->challenges = new ArrayCollection();
-        $this->exercices = new ArrayCollection();
-        $this->corrections = new ArrayCollection();
-    }
+    private $password;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPseudo(): ?string
-    {
-        return $this->pseudo;
-    }
-
-    public function setPseudo(string $pseudo): self
-    {
-        $this->pseudo = $pseudo;
-
-        return $this;
     }
 
     public function getEmail(): ?string
@@ -100,141 +54,75 @@ class User
         return $this;
     }
 
-    public function getCreatorQlvl(): ?int
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUserIdentifier(): string
     {
-        return $this->creatorQlvl;
+        return (string) $this->email;
     }
 
-    public function setCreatorQlvl(int $creatorQlvl): self
+    /**
+     * @deprecated since Symfony 5.3, use getUserIdentifier instead
+     */
+    public function getUsername(): string
     {
-        $this->creatorQlvl = $creatorQlvl;
-
-        return $this;
+        return (string) $this->email;
     }
 
-    public function getCorrectorQlvl(): ?int
+    /**
+     * @see UserInterface
+     */
+    public function getRoles(): array
     {
-        return $this->correctorQlvl;
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+
+        return array_unique($roles);
     }
 
-    public function setCorrectorQlvl(int $correctorQlvl): self
+    public function setRoles(array $roles): self
     {
-        $this->correctorQlvl = $correctorQlvl;
-
-        return $this;
-    }
-
-    public function getCorrectorExlvl(): ?int
-    {
-        return $this->correctorExlvl;
-    }
-
-    public function setCorrectorExlvl(int $correctorExlvl): self
-    {
-        $this->correctorExlvl = $correctorExlvl;
-
-        return $this;
-    }
-
-    public function getRealisatorExlvl(): ?int
-    {
-        return $this->realisatorExlvl;
-    }
-
-    public function setRealisatorExlvl(int $realisatorExlvl): self
-    {
-        $this->realisatorExlvl = $realisatorExlvl;
+        $this->roles = $roles;
 
         return $this;
     }
 
     /**
-     * @return Collection|Challenge[]
+     * @see PasswordAuthenticatedUserInterface
      */
-    public function getChallenges(): Collection
+    public function getPassword(): string
     {
-        return $this->challenges;
+        return $this->password;
     }
 
-    public function addChallenge(Challenge $challenge): self
+    public function setPassword(string $password): self
     {
-        if (!$this->challenges->contains($challenge)) {
-            $this->challenges[] = $challenge;
-            $challenge->setCreator($this);
-        }
-
-        return $this;
-    }
-
-    public function removeChallenge(Challenge $challenge): self
-    {
-        if ($this->challenges->removeElement($challenge)) {
-            // set the owning side to null (unless already changed)
-            if ($challenge->getCreator() === $this) {
-                $challenge->setCreator(null);
-            }
-        }
+        $this->password = $password;
 
         return $this;
     }
 
     /**
-     * @return Collection|Exercice[]
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
      */
-    public function getExercices(): Collection
+    public function getSalt(): ?string
     {
-        return $this->exercices;
-    }
-
-    public function addExercice(Exercice $exercice): self
-    {
-        if (!$this->exercices->contains($exercice)) {
-            $this->exercices[] = $exercice;
-            $exercice->setRealisator($this);
-        }
-
-        return $this;
-    }
-
-    public function removeExercice(Exercice $exercice): self
-    {
-        if ($this->exercices->removeElement($exercice)) {
-            // set the owning side to null (unless already changed)
-            if ($exercice->getRealisator() === $this) {
-                $exercice->setRealisator(null);
-            }
-        }
-
-        return $this;
+        return null;
     }
 
     /**
-     * @return Collection|Correction[]
+     * @see UserInterface
      */
-    public function getCorrections(): Collection
+    public function eraseCredentials()
     {
-        return $this->corrections;
-    }
-
-    public function addCorrection(Correction $correction): self
-    {
-        if (!$this->corrections->contains($correction)) {
-            $this->corrections[] = $correction;
-            $correction->setCorrector($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCorrection(Correction $correction): self
-    {
-        if ($this->corrections->removeElement($correction)) {
-            // set the owning side to null (unless already changed)
-            if ($correction->getCorrector() === $this) {
-                $correction->setCorrector(null);
-            }
-        }
-
-        return $this;
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }
