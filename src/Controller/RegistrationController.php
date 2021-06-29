@@ -30,12 +30,16 @@ class RegistrationController extends AbstractController
                 )
             );
 
+            $user->setCreatorQlvl(0);
+            $user->setCorrectorQlvl(0);
+            $user->setCorrectorExlvl(0);
+            $user->setRealisatorExlvl(0);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('Login');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('registration/register.html.twig', [

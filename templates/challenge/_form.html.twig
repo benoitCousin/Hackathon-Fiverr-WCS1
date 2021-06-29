@@ -1,0 +1,24 @@
+{{ form_start(form) }}
+    <div class="form-login col-6 mx-auto">
+        {{ form_row(form.title) }}
+        <div>
+            <label class="fs-4 mt-4">Choisissez une catégorie :</label>
+        </div>
+        <div>
+            <select class="form-select mb-4">
+                <option>Graphisme & Design</option>
+                <option>Marketing digital</option>
+                <option>Rédaction & Traduction</option>
+                <option>Vidéo & Animation</option>
+                <option>Musique & Audio</option>
+                <option>Programmation & Tech</option>
+            </select>
+        </div>
+        {{ form_row(form.description) }}
+        {{ form_row(form.link) }}
+        {{ form_row(form.validation) }}
+        {{ form_row(form.difficultyLevel) }}
+
+        <button class="btn btn-success btn-lg col-4">Valider</button>
+    </div>
+{{ form_end(form) }}
