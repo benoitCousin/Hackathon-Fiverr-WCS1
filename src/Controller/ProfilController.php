@@ -1,6 +1,5 @@
 <?php
-
-    namespace App\Controller;
+namespace App\Controller;
 
 use App\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -9,7 +8,7 @@ use symfony\component\HttpFoundation\Response;
 
    
 
-class profileController extends AbstractController {
+class ProfilController extends AbstractController {
 
 /**
      * @Route("/{user}", name="profile_show", methods={"GET"})

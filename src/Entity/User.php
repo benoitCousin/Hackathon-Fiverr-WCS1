@@ -23,8 +23,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $id;
 
-    private $furkan;
-
     /**
      * @ORM\Column(type="string", length=180, unique=true)
      */
