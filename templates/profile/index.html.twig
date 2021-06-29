@@ -26,6 +26,10 @@
                     <i class="fa fa-star"></i>
                     <i class="fa fa-star-o"></i>
                     <span>Super User</span>
+                    {% for user in users %}
+                    <p> {{ user.email }}</p>x
+                        
+                    {% endfor %}
                 </div>
 
                 <div class="profile-since">
