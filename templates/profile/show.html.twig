@@ -72,9 +72,12 @@
                     </ul>
                 </div>
 
-                <div class="profile-message-btn center-block text-center">
-                    <a href="#" class="btn btn-success">
-                        <i class="fa fa-envelope"></i> Send message
+                <div class="profile-message-btn center-block text-center d-flex m-5">
+                    <a href="{{ path('challenge_new') }}" class="btn btn-success">
+                        <i class="fa fa-envelope"></i> Créer un challenge
+                    </a>
+                    <a href="{{ path('challenge_index') }}" class="btn btn-success">
+                        <i class="fa fa-envelope"></i> Correction de challenge
                     </a>
                 </div>
             </div>
@@ -129,9 +132,9 @@
 
                 <div class="tabs-wrapper profile-tabs">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab-activity" data-toggle="tab">Challenge créer</a></li>
+                        <li class="active"><a href="#tab-activity" data-toggle="tab">Challenges créés</a></li>
                         <li><a href="#tab-friends" data-toggle="tab">Mes challenges</a></li>
-                        <li><a href="#tab-chat" data-toggle="tab">Mes corrections</a></li>
+                        <li><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
                     </ul>
 
                     <div class="tab-content">
@@ -139,72 +142,20 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <tbody>
+                                    {% for challenge in app.user.getChallenges %}
                                         <tr>
                                             <td class="text-center">
                                                 
                                             </td>
                                             <td>
-                                                John Doe  posted a comment in <a href="#">Avengers Initiative</a> project.
+                                                John Doe has created a challenge <a href="#"> {{ challenge.title }}</a>
                                             </td>
                                             <td>
-                                                2014/08/08 12:08
+                                                {{ challenge.createdAt |date('d/m/Y')  }}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                               
-                                            </td>
-                                            <td>
-                                                John Doe  changed order status from <span class="label label-primary">Pending</span> to <span class="label label-success">Completed</span>
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                
-                                            </td>
-                                            <td>
-                                                John Doe  posted a comment in <a href="#">Lost in Translation opening scene</a> discussion.
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                
-                                            </td>
-                                            <td>
-                                                John Doe  posted a comment in <a href="#">Avengers Initiative</a> project.
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                                
-                                            </td>
-                                            <td>
-                                                John Doe  changed order status from <span class="label label-warning">On Hold</span> to <span class="label label-danger">Disabled</span>
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-center">
-                                               
-                                            </td>
-                                            <td>
-                                                John Doe  posted a comment in <a href="#">Lost in Translation opening scene</a> discussion.
-                                            </td>
-                                            <td>
-                                                2014/08/08 12:08
-                                            </td>
-                                        </tr>
+                                        {% endfor %}
+                                       
                                         
                                         </tr>
                                     </tbody>
