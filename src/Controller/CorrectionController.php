@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
      */
 class CorrectionController extends AbstractController{
     /**
-     * @route("/", name="correction_com")
+     * @route("/", name="correction_index")
      */
     public function index(): Response
     {
