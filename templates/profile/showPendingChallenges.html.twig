@@ -3,7 +3,21 @@
 
 {% block title %}Profile{% endblock %}
 
+
 {% block body %}
+<style>
+    .label-success{
+        height: 21px;
+    }
+
+    .challenge-bloc {
+    width: 350px;
+    height: 420px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 5px;
+}
+</style>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdeys">
@@ -40,9 +54,12 @@
                     </ul>
                 </div>
 
-                <div class="profile-message-btn center-block text-center">
-                    <a href="#" class="btn btn-success">
-                        <i class="fa fa-envelope"></i> Send message
+                <div class="profile-message-btn center-block text-center m-5">
+                    <a href="{{ path('challenge_new') }}" class="btn btn-success">
+                        <i class="fa fa-envelope"></i> Créer un challenge
+                    </a>
+                    <a href="{{ path('challenge_index') }}" class="btn btn-success">
+                        <i class="fa fa-envelope"></i> Correction de challenge
                     </a>
                 </div>
             </div>
@@ -101,7 +118,7 @@
                     <ul class="nav nav-tabs">
                         <li class=""><a href="{{ path('profile_done') }}" data-toggle="tab">Challenge créer</a></li>
                         <li><a href=" {{ path('challenge_index') }}" data-toggle="tab">Mes challenges</a></li>
-                        <li><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
+                        <li class="active"><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
                     </ul>
 
                         <div class="row">
@@ -113,10 +130,13 @@
                                 <img src="https://1.bp.blogspot.com/-Md4dhiE7FnY/XowkpY5-8LI/AAAAAAAA4IM/T7lTXZZY1MUmn1mUYkEccCb76vltpQZQwCLcBGAsYHQ/s1600/javascript-et-css-1.jpg" class="img-fluid" alt="">
                                 <p> {{ challenge.title }} </p>
                                 <p> {{ challenge.description }} </p>
-                                <a href="{{ path('challenge_show',{"id": challenge.id }) }}"><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                                <p>Challenge réalisé par Mark ZUCKERBERG</p>
+                                <div class="d-flex justify-content-between">
+                                <a href="{{ path('challenge_show',{"id": challenge.id }) }}"><button type="button" class="btn btn-primary">Corrigé le 28/06/2021</button></a>
+                                <span class="label-success">Accepted</span>
+                                </div>
                             </div>
-                                {% else %}
-                                <p> You do not have any challenge created</p>
+
                             {% endif %}
                         {% endfor %}
                         </div>
@@ -125,7 +145,11 @@
                                 <img src="http://toolynk.com/wp-content/uploads/2017/10/react-native-paris-et-lyon.png" class="img-fluid" alt="">
                                 <p>React Native: Apprenner a consommer des API REST </p>
                                 <p> il existe différentes façons de consommer les API REST dans nos applications, ces méthodes incluent l'utilisation de la méthode JavaScript... </p>
-                                <a href=""><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                                <p>Challenge réalisé ROB Damien</p>
+                            <div class="d-flex justify-content-between">
+                                <a href=""><button type="button" class="btn btn-primary">Refusé le 28/06/2021</button></a>
+                                <span class="label-success">Pending ...</span>
+                            </div>                                
                             </div>
                         </div>
                         </div>
@@ -138,10 +162,13 @@
                                 <img src="https://cdn.alsacreations.net/xmedia/doc/full/php-logo.png" height="235px" class="" alt="">
                                 <p> PHP Basics</p>
                                 <p> À la fin de ce cours, vous serez capable de : installer votre environnement de développement </p>
-                                <a href="{{ path('challenge_show',{"id": challenge.id }) }}"><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                                <p>Challenge réalisé par DUPONT Rémi</p>
+                               <div class="d-flex justify-content-between">
+                                    <a href=""><button type="button" class="btn btn-primary">Corrigé le 30/06/2021</button></a>
+                                    <span class="label-success">Accepted</span>
+                                </div>
                             </div>
-                                {% else %}
-                                <p> You do not have any challenge created</p>
+        
                             {% endif %}
                         {% endfor %}
                         </div></div>

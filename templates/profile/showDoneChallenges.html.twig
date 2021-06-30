@@ -44,6 +44,9 @@
                     <a href="#" class="btn btn-success">
                         <i class="fa fa-envelope"></i> Send message
                     </a>
+                    <a href="#" class="btn btn-success">
+                        <i class="fa fa-envelope"></i> Send message
+                    </a>
                 </div>
             </div>
         </div>
@@ -104,20 +107,31 @@
                         <li><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
                     </ul>
 
-                        <div class="row">
-                        <div class="challenge-container d-flex ">
-                        {% for challenge in challenges %}   
-                            {% if challenge.status > 0  %}
-                            <div class="challenge-bloc d-flex flex-column">
-                                <img src="https://1.bp.blogspot.com/-Md4dhiE7FnY/XowkpY5-8LI/AAAAAAAA4IM/T7lTXZZY1MUmn1mUYkEccCb76vltpQZQwCLcBGAsYHQ/s1600/javascript-et-css-1.jpg" class="img-fluid" alt="">
-                                <p> {{ challenge.title }} </p>
-                                <p> {{ challenge.description }} </p>
-                                <a href="{{ path('challenge_show',{"id": challenge.id }) }}"><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                        <div class="tab-content">
+                        <div class="tab-pane fade in active" id="tab-activity">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    {% for challenge in app.user.getChallenges %}
+                                        <tr>
+                                            <td class="text-center">
+                                                
+                                            </td>
+                                            <td>
+                                                John Doe has created a challenge <a href="#"> {{ challenge.title }}</a>
+                                            </td>
+                                            <td>
+                                                {{ challenge.createdAt |date('d/m/Y')  }}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                       
+                                        
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
-                                {% else %}
-                                <p> You do not have any challenge created</p>
-                            {% endif %}
-                        {% endfor %}
+
                         </div>
                     </div>
                     
