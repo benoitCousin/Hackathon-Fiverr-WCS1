@@ -99,13 +99,13 @@
 
                 <div class="tabs-wrapper profile-tabs">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab-activity" data-toggle="tab">Challenge créer</a></li>
-                        <li><a href="#tab-friends" data-toggle="tab">Mes challenges</a></li>
-                        <li><a href="#tab-chat" data-toggle="tab">Mes corrections</a></li>
+                        <li class=""><a href="{{ path('profile_done') }}" data-toggle="tab">Challenge créer</a></li>
+                        <li><a href=" {{ path('challenge_index') }}" data-toggle="tab">Mes challenges</a></li>
+                        <li><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
                     </ul>
 
                         <div class="row">
-                            <h1>Challenges done</h1>
+                        <div class="col-12 d-flex flex-row">
                         <div class="challenge-container d-flex ">
                         {% for challenge in challenges %}   
                             {% if challenge.status > 0  %}
@@ -119,6 +119,32 @@
                                 <p> You do not have any challenge created</p>
                             {% endif %}
                         {% endfor %}
+                        </div>
+                         <div class="challenge-container d-flex ">
+                            <div class="challenge-bloc d-flex flex-column">
+                                <img src="http://toolynk.com/wp-content/uploads/2017/10/react-native-paris-et-lyon.png" class="img-fluid" alt="">
+                                <p>React Native: Apprenner a consommer des API REST </p>
+                                <p> il existe différentes façons de consommer les API REST dans nos applications, ces méthodes incluent l'utilisation de la méthode JavaScript... </p>
+                                <a href=""><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                            </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                        <div class="col-12 d-flex flex-row">
+                         <div class="challenge-container d-flex ">
+                        {% for challenge in challenges %}   
+                            {% if challenge.status > 0  %}
+                            <div class="challenge-bloc d-flex flex-column">
+                                <img src="https://cdn.alsacreations.net/xmedia/doc/full/php-logo.png" height="235px" class="" alt="">
+                                <p> PHP Basics</p>
+                                <p> À la fin de ce cours, vous serez capable de : installer votre environnement de développement </p>
+                                <a href="{{ path('challenge_show',{"id": challenge.id }) }}"><button type="button" class="btn btn-primary">Accéder au challenge</button></a>
+                            </div>
+                                {% else %}
+                                <p> You do not have any challenge created</p>
+                            {% endif %}
+                        {% endfor %}
+                        </div></div>
                         </div>
                     </div>
                     

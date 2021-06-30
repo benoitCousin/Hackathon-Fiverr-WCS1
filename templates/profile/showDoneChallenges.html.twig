@@ -99,13 +99,12 @@
 
                 <div class="tabs-wrapper profile-tabs">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#tab-activity" data-toggle="tab">Challenge créer</a></li>
-                        <li><a href="#tab-friends" data-toggle="tab">Mes challenges</a></li>
-                        <li><a href="#tab-chat" data-toggle="tab">Mes corrections</a></li>
+                        <li class=""><a href="" data-toggle="tab">Challenge créer</a></li>
+                        <li><a href=" {{ path('challenge_index') }}" data-toggle="tab">Mes challenges</a></li>
+                        <li><a href="{{ path('profile_pending') }}" data-toggle="tab">Mes corrections</a></li>
                     </ul>
 
                         <div class="row">
-                            <h1>Challenges done</h1>
                         <div class="challenge-container d-flex ">
                         {% for challenge in challenges %}   
                             {% if challenge.status > 0  %}

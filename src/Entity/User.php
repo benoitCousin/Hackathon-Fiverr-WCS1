@@ -38,10 +38,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string")
      */
     private $password;
+    /** 
+    * @ORM\Column(type="string")
+    */
     
-        /**
-     * @ORM\Column(type="integer", options={"default": 0})
-     */
     private $creatorQlvl;
 
     /**
