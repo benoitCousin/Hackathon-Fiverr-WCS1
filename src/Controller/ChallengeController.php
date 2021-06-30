@@ -42,7 +42,7 @@ class ChallengeController extends AbstractController
             $challenge->setStatus(0);
             $challenge->setCreatedAt(new datetime());
             $challenge->setCreator($this->getUser());
-            $this->getUser()->setCreatorQlvl($this->getUser()->getCorrectorQlvl() + 10);
+            $this->getUser()->setCreatorQlvl($this->getUser()->getCreatorQlvl() + 10);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($challenge);
             $entityManager->flush();
