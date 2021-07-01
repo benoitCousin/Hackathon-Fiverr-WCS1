@@ -10,6 +10,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 {% endblock %}
 {% block body %}
+<style>
+    .margbtn{
+        margin-bottom: 10px;
+    }
+</style>
 
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container bootstrap snippets bootdeys">
@@ -63,11 +68,14 @@
                 </div>
 
                 <div class="profile-message-btn center-block text-center d-flex m-5">
-                    <a href="{{ path('challenge_new') }}" class="btn btn-success">
-                        <i class="fa fa-envelope"></i> Créer un challenge
+                    <a href="{{ path('challenge_new') }}" class="btn btn-success margbtn mb-2">
+                       Création d'un challenge
                     </a>
-                    <a href="{{ path('challenge_index') }}" class="btn btn-success">
-                        <i class="fa fa-envelope"></i> Correction de challenge
+                    <a href="{{ path('challenge_index') }}" class="btn btn-success margbtn mb-2">
+                         Correction de challenge
+                    </a>
+                    <a href="{{ path('challenge_index') }}" class="btn btn-success margbtn mb-2">
+                       accèder  aux challenges
                     </a>
                 </div>
             </div>
